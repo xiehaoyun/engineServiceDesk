@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 定义action的bean -->
+	<bean id="EventRequestAction" class="com.serviceDesk.event.action.EventRequestAction" scope="prototype">
+		<property name="eventRequestFacade" ref="eventRequestFacade" />
+		<property name="eventWorkOrderFacade" ref="eventWorkOrderFacade" />
+		<property name="moOrgbaseinfoFacade" ref="moOrgbaseinfoFacade" />
+		<property name="bdBuildbaseinfoFacade" ref="bdBuildbaseinfoFacade" />
+		<property name="pdMaintareainfoFacade" ref="pdMaintareainfoFacade" />
+		<property name="pdDevlocationinfoFacade" ref="pdDevlocationinfoFacade" />
+	</bean>
+	
+	<bean id="EventSolutionAction" class="com.serviceDesk.event.action.EventSolutionAction" scope="prototype">
+		<property name="eventSolutionFacade" ref="eventSolutionFacade" />
+	</bean>
+	
+	<!-- 定义biz的bean -->
+	<bean id="eventRequestFacade" class="com.serviceDesk.event.biz.impl.EventRequestFacadeImpl">
+		<property name="eventRequestDAO" ref="TEventRequestDAO" />
+	</bean>
+	
+	<bean id="eventWorkOrderFacade" class="com.serviceDesk.event.biz.impl.EventWorkOrderFacadeImpl">
+		<property name="eventWorkOrderDAO" ref="TEventWorkOrderDAO" />
+		<property name="baseDao" ref="BaseDAO" />	
+	</bean>
+
+	<bean id="eventSolutionFacade" class="com.serviceDesk.event.biz.impl.EventSolutionFacadeImpl">
+		<property name="eventSolutionDAO" ref="TEventSolutionDAO" />
+		<property name="baseDao" ref="BaseDAO" />	
+	</bean>
+		
+	<!-- 定义dao的bean -->
+	<bean id="TEventTypeDAO"
+		class="com.serviceDesk.event.dao.impl.TEventTypeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEventRequestDAO"
+		class="com.serviceDesk.event.dao.impl.TEventRequestDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEventWorkOrderDAO"
+		class="com.serviceDesk.event.dao.impl.TEventWorkOrderDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>	
+	<bean id="TEventSolutionDAO"
+		class="com.serviceDesk.event.dao.impl.TEventSolutionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+</beans>

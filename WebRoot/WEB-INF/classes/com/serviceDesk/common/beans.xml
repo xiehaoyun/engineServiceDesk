@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 定义action的bean -->
+	
+	<!-- 定义biz的bean -->
+	<bean id="moOrgbaseinfoFacade" class="com.serviceDesk.common.biz.impl.MoOrgbaseinfoFacadeImpl">
+		<property name="moOrgbaseinfoDao" ref="TMoOrgbaseinfoDAO" />		
+	</bean>
+	<bean id="bdBuildbaseinfoFacade" class="com.serviceDesk.common.biz.impl.BdBuildbaseinfoFacadeImpl">
+		<property name="bdBuildbaseinfoDao" ref="TBdBuildbaseinfoDAO" />		
+	</bean>
+	<bean id="pdMaintareainfoFacade" class="com.serviceDesk.common.biz.impl.PdMaintareainfoFacadeImpl">
+		<property name="pdMaintareainfoDao" ref="TPdMaintareainfoDAO" />
+	</bean>
+	<bean id="pdDevlocationinfoFacade" class="com.serviceDesk.common.biz.impl.PdDevlocationinfoFacadeImpl">
+		<property name="pdDevlocationinfoDao" ref="TPdDevlocationinfoDAO" />
+	</bean>
+	<bean id="pdDevassetsinfoFacade" class="com.serviceDesk.common.biz.impl.PdDevassetsinfoFacadeImpl">
+		<property name="pdDevassetsinfoDao" ref="TPdDevassetsinfoDAO" />
+	</bean>
+	
+	<!-- 定义dao的bean -->
+	<bean id="BaseDAO" class="com.serviceDesk.common.dao.impl.BaseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="TMoOrgbaseinfoDAO" class="com.serviceDesk.common.domain.TMoOrgbaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TBdBuildbaseinfoDAO" class="com.serviceDesk.common.domain.TBdBuildbaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdMaintareainfoDAO"
+		class="com.serviceDesk.common.domain.TPdMaintareainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdDevassetsinfoDAO"
+		class="com.serviceDesk.common.domain.TPdDevassetsinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdDevlocationinfoDAO"
+		class="com.serviceDesk.common.domain.TPdDevlocationinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+</beans>

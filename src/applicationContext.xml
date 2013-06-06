@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+				<!-- 以下用来列出Hibernate映射文件 -->
+				<value>
+					com/serviceDesk/common/domain/TStMeteruseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TDcDatacenterbaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoIndustrybaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEcEnergyitemresult.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TDtEnergyitemdict.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdCompuseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEcParamecitemrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/Meterorivalue.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEvEventinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdCompexinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdPowergridlevelrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdMaintareainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TAlAlertinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TBdBuildgroupbaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TOvMeterorigvalue.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdPowergridinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TBdBuildbaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoMonitoraprelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPqPowerqltyresult.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEvStaffinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdCompexinfodict.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEcMeterecitemrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEvManagerorgrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPqParampqitemrelainfo.hbm.xml
+				</value>
+				<value>com/serviceDesk/common/domain/Emp.hbm.xml</value>
+				<value>
+					com/serviceDesk/common/domain/TAlAlertcondition.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoDepartmonitorprelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/Salgrade.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TAlAlerttype.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TAlAlerthandle.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TBdOrgbuildrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdDevassetsinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/config/domain/TPdDevexinfodict.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdMaintapgrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TDtPowerqltyitemdict.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdComponentrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdDevlocationinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/Myuser.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoMonitorpinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/Bonus.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEvAlerttypeconrelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEpEnergyitemprice.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoOrgengyconsrenoinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdDepartmaintarelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEvEventworkorder.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TBdBuildengyconsrenoinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoMonitorabaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoDepartbaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoDistrictbaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/config/domain/TPdDevicestate.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/config/domain/TPdDeviceexinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdComponentinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/config/domain/TPdDeviceinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TPdDevstateresult.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TBdBuildexinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TBdBuildaddfile.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TBdBuildgrouprelainfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/Origvalue.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TDtEnvironitemdict.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoOrgbaseinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/Dept.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TStMeterparaminfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEnEnvironitemresult.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TMoMapstrategy.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TEvChangeworkorder.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/common/domain/TStMeterprodinfo.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/event/domain/TEventType.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/event/domain/TEventRequest.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/event/domain/TEventWorkOrder.hbm.xml
+				</value>
+				<value>
+					com/serviceDesk/event/domain/TEventSolution.hbm.xml
+				</value></list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					<!-- org.hibernate.dialect.MySQLDialect -->
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate"> 
+		<property name="sessionFactory" ref="sf"></property> </bean> -->
+
+	<!-- 各个子模块定义的beans.xml文件，在这里统一载入 -->
+	<import resource="com/serviceDesk/event/beans.xml" />
+	<import resource="com/serviceDesk/common/beans.xml" />
+	<import resource="com/serviceDesk/config/beans.xml" />
+	
+	
+	
+	<bean id="TStMeteruseinfoDAO"
+		class="com.serviceDesk.common.domain.TStMeteruseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TDcDatacenterbaseinfoDAO"
+		class="com.serviceDesk.common.domain.TDcDatacenterbaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoIndustrybaseinfoDAO"
+		class="com.serviceDesk.common.domain.TMoIndustrybaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEcEnergyitemresultDAO"
+		class="com.serviceDesk.common.domain.TEcEnergyitemresultDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TDtEnergyitemdictDAO"
+		class="com.serviceDesk.common.domain.TDtEnergyitemdictDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdCompuseinfoDAO"
+		class="com.serviceDesk.common.domain.TPdCompuseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEcParamecitemrelainfoDAO"
+		class="com.serviceDesk.common.domain.TEcParamecitemrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MeterorivalueDAO"
+		class="com.serviceDesk.common.domain.MeterorivalueDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEvEventinfoDAO"
+		class="com.serviceDesk.common.domain.TEvEventinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdCompexinfoDAO"
+		class="com.serviceDesk.common.domain.TPdCompexinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdPowergridlevelrelainfoDAO"
+		class="com.serviceDesk.common.domain.TPdPowergridlevelrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TAlAlertinfoDAO"
+		class="com.serviceDesk.common.domain.TAlAlertinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TBdBuildgroupbaseinfoDAO"
+		class="com.serviceDesk.common.domain.TBdBuildgroupbaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TOvMeterorigvalueDAO"
+		class="com.serviceDesk.common.domain.TOvMeterorigvalueDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdPowergridinfoDAO"
+		class="com.serviceDesk.common.domain.TPdPowergridinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoMonitoraprelainfoDAO"
+		class="com.serviceDesk.common.domain.TMoMonitoraprelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPqPowerqltyresultDAO"
+		class="com.serviceDesk.common.domain.TPqPowerqltyresultDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEvStaffinfoDAO"
+		class="com.serviceDesk.common.domain.TEvStaffinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdCompexinfodictDAO"
+		class="com.serviceDesk.common.domain.TPdCompexinfodictDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEcMeterecitemrelainfoDAO"
+		class="com.serviceDesk.common.domain.TEcMeterecitemrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEvManagerorgrelainfoDAO"
+		class="com.serviceDesk.common.domain.TEvManagerorgrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPqParampqitemrelainfoDAO"
+		class="com.serviceDesk.common.domain.TPqParampqitemrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="EmpDAO" class="com.serviceDesk.common.domain.EmpDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TAlAlertconditionDAO"
+		class="com.serviceDesk.common.domain.TAlAlertconditionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoDepartmonitorprelainfoDAO"
+		class="com.serviceDesk.common.domain.TMoDepartmonitorprelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="SalgradeDAO"
+		class="com.serviceDesk.common.domain.SalgradeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TAlAlerttypeDAO"
+		class="com.serviceDesk.common.domain.TAlAlerttypeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TAlAlerthandleDAO"
+		class="com.serviceDesk.common.domain.TAlAlerthandleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TBdOrgbuildrelainfoDAO"
+		class="com.serviceDesk.common.domain.TBdOrgbuildrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="TPdMaintapgrelainfoDAO"
+		class="com.serviceDesk.common.domain.TPdMaintapgrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TDtPowerqltyitemdictDAO"
+		class="com.serviceDesk.common.domain.TDtPowerqltyitemdictDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdComponentrelainfoDAO"
+		class="com.serviceDesk.common.domain.TPdComponentrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MyuserDAO"
+		class="com.serviceDesk.common.domain.MyuserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoMonitorpinfoDAO"
+		class="com.serviceDesk.common.domain.TMoMonitorpinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="BonusDAO"
+		class="com.serviceDesk.common.domain.BonusDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEvAlerttypeconrelainfoDAO"
+		class="com.serviceDesk.common.domain.TEvAlerttypeconrelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEpEnergyitempriceDAO"
+		class="com.serviceDesk.common.domain.TEpEnergyitempriceDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoOrgengyconsrenoinfoDAO"
+		class="com.serviceDesk.common.domain.TMoOrgengyconsrenoinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdDepartmaintarelainfoDAO"
+		class="com.serviceDesk.common.domain.TPdDepartmaintarelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEvEventworkorderDAO"
+		class="com.serviceDesk.common.domain.TEvEventworkorderDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TBdBuildengyconsrenoinfoDAO"
+		class="com.serviceDesk.common.domain.TBdBuildengyconsrenoinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoMonitorabaseinfoDAO"
+		class="com.serviceDesk.common.domain.TMoMonitorabaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoDepartbaseinfoDAO"
+		class="com.serviceDesk.common.domain.TMoDepartbaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoDistrictbaseinfoDAO"
+		class="com.serviceDesk.common.domain.TMoDistrictbaseinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="TPdComponentinfoDAO"
+		class="com.serviceDesk.common.domain.TPdComponentinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPdDevstateresultDAO"
+		class="com.serviceDesk.common.domain.TPdDevstateresultDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TBdBuildexinfoDAO"
+		class="com.serviceDesk.common.domain.TBdBuildexinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TBdBuildaddfileDAO"
+		class="com.serviceDesk.common.domain.TBdBuildaddfileDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TBdBuildgrouprelainfoDAO"
+		class="com.serviceDesk.common.domain.TBdBuildgrouprelainfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="OrigvalueDAO"
+		class="com.serviceDesk.common.domain.OrigvalueDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TDtEnvironitemdictDAO"
+		class="com.serviceDesk.common.domain.TDtEnvironitemdictDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="DeptDAO" class="com.serviceDesk.common.domain.DeptDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TStMeterparaminfoDAO"
+		class="com.serviceDesk.common.domain.TStMeterparaminfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEnEnvironitemresultDAO"
+		class="com.serviceDesk.common.domain.TEnEnvironitemresultDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TMoMapstrategyDAO"
+		class="com.serviceDesk.common.domain.TMoMapstrategyDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TEvChangeworkorderDAO"
+		class="com.serviceDesk.common.domain.TEvChangeworkorderDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+	<bean id="TStMeterprodinfoDAO"
+		class="com.serviceDesk.common.domain.TStMeterprodinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+</beans>

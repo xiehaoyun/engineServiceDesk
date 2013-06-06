@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 定义action的bean -->
+	<bean id="PdDeviceinfoAction" class="com.serviceDesk.config.action.PdDeviceinfoAction" scope="prototype">
+		<property name="pdDeviceinfoFacade" ref="pdDeviceinfoFacade" />
+	</bean>
+	
+	<bean id="PdDeviceexinfoAction" class="com.serviceDesk.config.action.PdDeviceexinfoAction" scope="prototype">
+		<property name="pdDeviceexinfoFacade" ref="pdDeviceexinfoFacade" />
+	</bean>
+	
+	<bean id="PdDevexinfodictAction" class="com.serviceDesk.config.action.PdDevexinfodictAction" scope="prototype">
+		<property name="pdDevexinfodictFacade" ref="pdDevexinfodictFacade" />
+	</bean>
+	
+	<bean id="PdDevicestateAction" class="com.serviceDesk.config.action.PdDevicestateAction" scope="prototype">
+		<property name="pdDevicestateFacade" ref="pdDevicestateFacade" />
+	</bean>
+	
+	<!-- 定义biz的bean -->
+	<bean id="pdDeviceinfoFacade" class="com.serviceDesk.config.biz.impl.PdDeviceinfoFacadeImpl">
+		<property name="pdDeviceinfoDAO" ref="TPdDeviceinfoDAO" />
+		<property name="baseDao" ref="BaseDAO" />	
+	</bean>
+	
+	<bean id="pdDeviceexinfoFacade" class="com.serviceDesk.config.biz.impl.PdDeviceexinfoFacadeImpl">
+		<property name="pdDeviceexinfoDAO" ref="TPdDeviceexinfoDAO" />
+		<property name="baseDao" ref="BaseDAO" />	
+	</bean>
+	
+	<bean id="pdDevexinfodictFacade" class="com.serviceDesk.config.biz.impl.PdDevexinfodictFacadeImpl">
+		<property name="pdDevexinfodictDAO" ref="TPdDevexinfodictDAO" />
+		<property name="baseDao" ref="BaseDAO" />	
+	</bean>	
+	
+	<bean id="pdDevicestateFacade" class="com.serviceDesk.config.biz.impl.PdDevicestateFacadeImpl">
+		<property name="pdDevicestateDAO" ref="TPdDevicestateDAO" />
+		<property name="baseDao" ref="BaseDAO" />	
+	</bean>	
+	
+	<!-- 定义dao的bean -->
+	
+	<bean id="TPdDeviceinfoDAO"
+		class="com.serviceDesk.config.dao.impl.TPdDeviceinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="TPdDeviceexinfoDAO"
+		class="com.serviceDesk.config.dao.impl.TPdDeviceexinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="TPdDevexinfodictDAO"
+		class="com.serviceDesk.config.dao.impl.TPdDevexinfodictDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="TPdDevicestateDAO"
+		class="com.serviceDesk.config.dao.impl.TPdDevicestateDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>
